@@ -3,7 +3,6 @@ let pigLatinWords = [];
 
 // console.log("originalWords is", originalWords);
 // console.log("pigLatinWords is", pigLatinWords);
-
 for (let i = 0; i < originalWords.length; i++){
 
   // console.log(originalWords[i])
