@@ -52,3 +52,6 @@ console.log("---");
 
 console.log("I'm hungry and I have 15 minutes for lunch.");
 whatToDoForLunch(true, 15);
+
+
+module.exports = { whatToDoForLunch }

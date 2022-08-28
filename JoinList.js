@@ -6,23 +6,25 @@ print final message
 add period at the end
 */
 const conceptList = ["gists", "types", "operators", "iteration", "problem solving"];
-const other = ['hello', 'world']
-function joinList(array){
-  if (array.length === 0){
-    return ""
+const other = ['hello', 'world'];
+function joinList(array) {
+  if (array.length === 0) {
+    return "";
   }
   let message = '';
   for (let i = 0; i < array.length; i++) {
-    if (i < array.length - 1){
+    if (i < array.length - 1) {
       message += array[i] + ", ";
     }
     else {
-      message += array[i] + ''
+      message += array[i] + '';
     }
-  // console.log(typeof(element));
+
   }
-  return message
+  return message;
 }
-console.log(joinList([]))
-console.log(joinList(conceptList));
-console.log(joinList(other))
+// console.log(joinList([]));
+// console.log(joinList(conceptList));
+// console.log(joinList(other));
+
+module.exports = { joinList }
