@@ -22,27 +22,79 @@ const companySalesData = [
   }
 ];
 
-const calculateSalesTax = function(salesData, taxRates) {
+// Expected Results
+// { 
+//  Telus: {
+//   totalSales: 1300
+//   totalTaxes: 144
+// },
+// Bombardier: {
+//   totalSales: 800
+//   totalTaxeas: 40
+// }
+// }
 
+
+const calculateSalesTax = function(salesData, taxRates) {
+  let outobj = {}
+  for (let eachSale of salesData){
+    let combine = {}
+    let name = ""
+    let rate = 0
+    let sales = 0
+    let tax = 0
+    for (const key in eachSale) {
+      if (key === "province") {
+        rate = taxByProv(key[eachSale], taxRates)
+      }
+      if (key === "sales") {
+        sales = totalSales(key[eachSale], rate)
+        tax = rate *sales
+      }
+      combine.sales = sales
+      combine.tax = tax
+      combine.name = name
+    } 
+    return combine
+  }
 };
 
-  // loop through sales data 
-  for (let i = 0; i < salesData.length; i++ ){
-    console.log('name:', (salesData[i].name))
-    if(salesData[i].province === 'SK'){
-      tax = 0.10
-    }
-  };
-//loop through sales tax 
-for (let j = 0; j < salesTaxRates.length; j++ ){
-  if(salesTaxRates[i].province === 'SK'){
 
+
+
+const totalSales = (sales) => {
+  let total = 0;
+  for (const sale of sales) {
+    total += sale;
   }
-}
+  return total;
+};
 
-calculateSalesTax(companySalesData,salesTaxRates)
-// apply sale tax of each prov in each object
-// 
+const taxByProv = (companyProv, taxRatesByProv) => {
+  let rate = 0;
+  for (let prov in taxRatesByProv) {
+    if (companyProv === prov) {
+      rate = taxRatesByProv[prov];
+    }
+  }
+  return rate;
+};
+
+// taxByProv("AB", salesTaxRates)
+const result = calculateSalesTax(companySalesData,salesTaxRates)
+console.log(result)
 
 
-// condence sales of similar names
+//results seperated by company name
+//total sales and total tax returned
+
+
+//for each object 
+//determine prv
+// sum up all sales and add it as k:val
+//calculate tax  and add it in as k:v to object
+//loop through array of object and condense same companies
+//return company name  with total sales and tax
+
+
+
