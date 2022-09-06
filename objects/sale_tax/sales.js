@@ -35,34 +35,69 @@ const companySalesData = [
 // }
 
 
+// const calculateSalesTax = function(salesData, taxRates) {
+//   let combine = {};
+//   let rturnData = {};
+//   for(const sale in salesData) {
+//     const rate = taxByProv(salesData[sale].province, taxRates);
+//     const totalSales = sumSales(salesData[sale].sales);
+//     const totalTaxes = totalSales * rate
+//     combine[salesData[sale].name] = {TotalSales: totalSales , TotalTaxes: totalTaxes}
+//     //     if(!name === rturnData){}
+//   }
+//   console.log(combine)
+
+//  }
 const calculateSalesTax = function(salesData, taxRates) {
-  let outobj = {}
-  for (let eachSale of salesData){
-    let combine = {}
-    let name = ""
-    let rate = 0
-    let sales = 0
-    let tax = 0
-    for (const key in eachSale) {
-      if (key === "province") {
-        rate = taxByProv(key[eachSale], taxRates)
-      }
-      if (key === "sales") {
-        sales = totalSales(key[eachSale], rate)
-        tax = rate *sales
-      }
-      combine.sales = sales
-      combine.tax = tax
-      combine.name = name
-    } 
-    return combine
+  let rturnData = {};
+  for(const sale in salesData) {
+    let combine = {};
+    const rate = taxByProv(salesData[sale].province, taxRates);
+    const totalSales = sumSales(salesData[sale].sales);
+    const totalTaxes = totalSales * rate
+    combine[salesData[sale].name] = {TotalSales: totalSales , TotalTaxes: totalTaxes}
+    // console.log(combine)
+    for (let key in combine) {
+      for (let n in rturnData){
+        if(!n ===key){
+          rturnData[key] = {TotalSales: totalSales , TotalTaxes: totalTaxes};
+          console.log(rturnData)
+        }
+    }
+   }
   }
-};
+}
+// };
+
+// const calculateSalesTax = function(salesData, taxRates) {
+//   let outobj = {}
+//   for (let eachSale of salesData){
+//     let combine = {}
+//     let name = ""
+//     let rate = 0
+//     let sales = 0
+//     let tax = 0
+//     for (const key in eachSale) {
+//     if (key === "sales") {
+//       sales = sumSales(eachSale[key])
+//     }
+//     if (key === "province") {
+//       rate = taxByProv(key[eachSale], taxRates)
+//       tax = rate *sales
+//       combine.TotalSale = sales
+//       combine.TotalTax = tax
+//     } 
+//   }
+
+// }
 
 
 
 
-const totalSales = (sales) => {
+
+
+
+const sumSales = (sales) => {
   let total = 0;
   for (const sale of sales) {
     total += sale;
