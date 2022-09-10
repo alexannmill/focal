@@ -56,16 +56,16 @@ const calculateSalesTax = function(salesData, taxRates) {
     const totalSales = sumSales(salesData[sale].sales);
     const totalTaxes = totalSales * rate
     combine[salesData[sale].name] = {TotalSales: totalSales , TotalTaxes: totalTaxes}
-    // console.log(combine)
+    console.log(combine)
     for (let key in combine) {
       for (let n in rturnData){
         if(!n ===key){
           rturnData[key] = {TotalSales: totalSales , TotalTaxes: totalTaxes};
-          console.log(rturnData)
         }
+      }
     }
-   }
   }
+  console.log(rturnData)
 }
 // };
 

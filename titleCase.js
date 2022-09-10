@@ -16,18 +16,3 @@ const titleCase = (input) => {
   const finalAnswer = newArray.join("").trim();
   return finalAnswer;
 };
-
-// takes in a string
-//split string by " "
-//loop through array/ sentence  
-//nested loop to catch first letter of word
-// uppercase first letter  of first letter in each element 
-//all other letters set to lower case
-// return string 
-
-// titleCase("this is an example") should return "This Is An Example"
-// titleCase("test") should return "Test"
-// titleCase("i r cool") should return "I R Cool"
-// titleCase("WHAT HAPPENS HERE") should return "What Happens Here"
-// titleCase("") should return ""
-// titleCase("A") should return "A"

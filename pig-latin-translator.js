@@ -7,9 +7,7 @@ for (let i = 0; i < originalWords.length; i++) {
 console.log(pigLatinWords.join(" "));
 
 function translateToPigLatin(word) {
-
   return word.slice(1, word.lengh) + word[0] + "ay";
-};
-
+}
 
 module.exports = { translateToPigLatin };

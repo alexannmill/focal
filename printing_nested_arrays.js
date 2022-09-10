@@ -1,14 +1,20 @@
 const printItems = (array) => {
-  for (let item of array){
-    if(Array.isArray(item)){
-      printItems(item)
+  for (let item of array) {
+    if (Array.isArray(item)) {
+      printItems(item);
     } else {
-    console.log(item)
-    };
-  };
+      console.log(item);
+    }
+  }
 };
-const array = ["A", [["B", ["C"]], [[["D"]], "E"]]];
+const array = [
+  "A",
+  [
+    ["B", ["C"]],
+    [[["D"]], "E"],
+  ],
+];
 
 printItems(array);
 
-module.exports = { printItems }
+module.exports = { printItems };

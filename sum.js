@@ -4,7 +4,7 @@ function sumToOne(n) {
     sum += i;
   }
   return sum;
-}
+};
 
 console.log(sumToOne(4));
 
